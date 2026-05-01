@@ -1,0 +1,53 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #145A32;
+  --color-secondary: #0B3D2E;
+  --color-accent: #2ECC71;
+  --color-forest-base: #071A14;
+  --color-forest-text: #EAF5EE;
+  --color-forest-muted: #A8C3B8;
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    background-color: var(--color-forest-base);
+    color: var(--color-forest-text);
+    @apply font-sans antialiased selection:bg-accent/30;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)];
+  }
+
+  .glass-card {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 transition-all duration-300;
+  }
+
+  .hover-glow {
+    @apply hover:shadow-[0_0_30px_rgba(46,204,113,0.2)] hover:border-accent/30;
+  }
+
+  .nav-link {
+    @apply relative text-forest-muted hover:text-accent transition-colors duration-300;
+  }
+
+  .nav-link::after {
+    @apply content-[''] absolute bottom-0 left-0 w-0 h-[2px] bg-accent transition-all duration-300;
+  }
+
+  .nav-link:hover::after {
+    @apply w-full;
+  }
+
+  .btn-forest {
+    @apply px-6 py-3 bg-gradient-to-r from-emerald-800 to-primary text-forest-text rounded-xl font-medium 
+           transition-all duration-300 hover:scale-[1.05] active:scale-[0.98] 
+           shadow-lg hover:shadow-accent/20 border border-white/10 disabled:opacity-50;
+  }
+}
+
+
